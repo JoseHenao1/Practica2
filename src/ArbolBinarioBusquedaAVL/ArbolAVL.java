@@ -276,7 +276,7 @@ public class ArbolAVL<T extends Comparable> {
      * @param dato
      * @return
      */
-    public NodoAVL buscar(Comparable dato) {
+   /* public NodoAVL buscar(Comparable dato) {
         NodoAVL aux = null;
         aux = raiz;
 
@@ -299,7 +299,7 @@ public class ArbolAVL<T extends Comparable> {
             }
         }
         return aux;
-    }
+    }*/
 
     public NodoAVL buscarComplejo(Comparable dato, int x) {
         NodoAVL aux = null;
@@ -525,6 +525,7 @@ public class ArbolAVL<T extends Comparable> {
     }
 
     public boolean Eliminar(Comparable Dato) {
+        this.setCantidadp(cantidadp-1);
         NodoAVL aux = raiz;
         NodoAVL padre = raiz;
         boolean hijoIzquierdo = true;  
@@ -707,63 +708,35 @@ public class ArbolAVL<T extends Comparable> {
         return raizA;
     }
 
-    public String Mostrar(int i) {
+        public String Mostrar(int i) {
+        NodoAVL RaizAux = null;
+        if (i == 0) {
+            RaizAux = raiz;
+        } else if (i == 1) {
+            RaizAux = raizS;
+        } else if (i == 2) {
+            RaizAux = raizA;
+        } else {
+            JOptionPane.showMessageDialog(null, "ERROR,No se ha llenado el arbol");
+        }
 
         String Dato = "";
 
-        if (i == 0) {
-            Queue<NodoAVL> queue = new LinkedList<>();
-            if (raiz != null) {
-                queue.add(raiz);
-                NodoAVL a;
-                while (!queue.isEmpty()) {
-                    a = queue.poll();
-                    System.out.print(a.getDato() + ",");
-                    Dato = Dato + "\n" + a.getDato()+": "+a.getSignificado();
-                    if (a.getLi() != null) {
-                        queue.add((NodoAVL) a.getLi());
-                    }
-                    if (a.getLd() != null) {
-                        queue.add((NodoAVL) a.getLd());
-                    }
+        Queue<NodoAVL> queue = new LinkedList<>();
+        if (RaizAux != null) {
+            queue.add(RaizAux);
+            NodoAVL a;
+            while (!queue.isEmpty()) {
+                a = queue.poll();
+                System.out.print(a.getDato() + ",");
+                Dato = Dato + "\n" + a.getDato() + ": " + a.getSignificado();
+                if (a.getLi() != null) {
+                    queue.add((NodoAVL) a.getLi());
+                }
+                if (a.getLd() != null) {
+                    queue.add((NodoAVL) a.getLd());
                 }
             }
-        } else if (i == 1) {
-            Queue<NodoAVL> queue = new LinkedList<>();
-            if (raizS != null) {
-                queue.add(raizS);
-                NodoAVL a;
-                while (!queue.isEmpty()) {
-                    a = queue.poll();
-                    System.out.print(a.getDato() + ",");
-                    Dato = Dato + "\n" + a.getDato()+": "+a.getSignificado();
-                    if (a.getLi() != null) {
-                        queue.add((NodoAVL) a.getLi());
-                    }
-                    if (a.getLd() != null) {
-                        queue.add((NodoAVL) a.getLd());
-                    }
-                }
-            }
-        } else if (i == 2) {
-            Queue<NodoAVL> queue = new LinkedList<>();
-            if (raizA != null) {
-                queue.add(raizA);
-                NodoAVL a;
-                while (!queue.isEmpty()) {
-                    a = queue.poll();
-                    System.out.print(a.getDato() + ",");
-                    Dato = Dato + "\n" + a.getDato()+": "+a.getSignificado();
-                    if (a.getLi() != null) {
-                        queue.add((NodoAVL) a.getLi());
-                    }
-                    if (a.getLd() != null) {
-                        queue.add((NodoAVL) a.getLd());
-                    }
-                }
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "ERROR,No se ha llenado el arbol");
         }
 
         return Dato;
