@@ -2,6 +2,7 @@ package practica2;
 
 import ArbolBinarioBusquedaAVL.ArbolAVL;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -43,16 +44,10 @@ public class Diccionario extends ArbolAVL {
         }
     }
 
-    public void download() {
-        try {
-            FileWriter output = new FileWriter("importar.txt");
-            for (int i = 0; i < this.getCantidadp() + getCantidad(); i++) {
-                output.write(this.Mostrar(0));
-            }
-            output.close();
-        } catch (IOException ex) {
-            System.out.println("ERROR");
-        }
+    public void download()throws FileNotFoundException, IOException, Exception {
+        BufferedWriter out = new BufferedWriter(new FileWriter("importar.txt"));
+        out.write(this.Mostrar(0)+"si llegue");
+        out.close();
     }
 
     public void buscar(String dato) {
