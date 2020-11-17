@@ -24,7 +24,8 @@ public class Diccionario extends ArbolAVL {
     }
 
     public void insertar(Comparable dato) throws Exception {
-        if (super.buscar(dato) == null) {
+        //if (super.buscar(dato) == null) {
+        if (super.buscarComplejo(dato,0) == null) {
             if (super.insertarPalabraS(dato) == null) {
                 throw new Exception("Error al insertar la palabra " + dato);
             }
@@ -51,7 +52,8 @@ public class Diccionario extends ArbolAVL {
     }
 
     public void buscar(String dato) {
-        if (super.buscar((Comparable) dato) == null) {
+        //if (super.buscar((Comparable) dato) == null) {
+        if (super.buscarComplejo((Comparable) dato,0) == null) {
             textAResultado.setText(" La palabra " + dato + " No se encuentra");
         } else {
             textAResultado.setText(" Urra!!! Palabra encontrada ");
