@@ -527,11 +527,10 @@ public class ArbolAVL<T extends Comparable> {
     public boolean Eliminar(Comparable Dato) {
         NodoAVL aux = raiz;
         NodoAVL padre = raiz;
-        boolean hijoIzquierdo = true;
-        int i = Dato.compareTo(aux.getDato());
+        boolean hijoIzquierdo = true;  
         while (aux.getDato() != Dato) {
             padre = aux;
-            if (i < 0) {
+            if (Dato.compareTo(aux.getDato()) < 0) {
                 hijoIzquierdo = true;
                 aux = (NodoAVL) aux.getLi();
             } else {
@@ -541,6 +540,7 @@ public class ArbolAVL<T extends Comparable> {
             if (aux == null) {
                 return false;
             }
+            System.out.println("aux:"+aux.getDato()+"padre:"+padre.getDato()+"hijo:"+hijoIzquierdo);
         }
         if (aux.getLi() == null && aux.getLd() == null) {
             if (aux == raiz) {
@@ -576,6 +576,9 @@ public class ArbolAVL<T extends Comparable> {
                 padre.setLd(reemplazo);
             }
             reemplazo.setLi(aux.getLi());
+            System.out.println(reemplazo.getDato());
+            System.out.println(reemplazo.getLi().getDato());
+            System.out.println(reemplazo.getLd().getDato());
         }
         return true;
     }
@@ -584,6 +587,11 @@ public class ArbolAVL<T extends Comparable> {
         NodoAVL Rpadre=nodoR;
         NodoAVL reemplazo=nodoR;
         NodoAVL aux=(NodoAVL) nodoR.getLd();
+        while(aux!=null){
+            Rpadre=reemplazo;
+            reemplazo=aux;
+            aux=(NodoAVL) aux.getLi();
+        }
         if(reemplazo!=nodoR.getLd()){
             Rpadre.setLi(reemplazo.getLd());
             reemplazo.setLd(nodoR.getLd());
@@ -711,7 +719,7 @@ public class ArbolAVL<T extends Comparable> {
                 while (!queue.isEmpty()) {
                     a = queue.poll();
                     System.out.print(a.getDato() + ",");
-                    Dato = Dato + "\n" + a.getDato();
+                    Dato = Dato + "\n" + a.getDato()+": "+a.getSignificado();
                     if (a.getLi() != null) {
                         queue.add((NodoAVL) a.getLi());
                     }
@@ -728,7 +736,7 @@ public class ArbolAVL<T extends Comparable> {
                 while (!queue.isEmpty()) {
                     a = queue.poll();
                     System.out.print(a.getDato() + ",");
-                    Dato = Dato + "\n" + a.getDato();
+                    Dato = Dato + "\n" + a.getDato()+": "+a.getSignificado();
                     if (a.getLi() != null) {
                         queue.add((NodoAVL) a.getLi());
                     }
@@ -745,7 +753,7 @@ public class ArbolAVL<T extends Comparable> {
                 while (!queue.isEmpty()) {
                     a = queue.poll();
                     System.out.print(a.getDato() + ",");
-                    Dato = Dato + "\n" + a.getDato();
+                    Dato = Dato + "\n" + a.getDato()+": "+a.getSignificado();
                     if (a.getLi() != null) {
                         queue.add((NodoAVL) a.getLi());
                     }
