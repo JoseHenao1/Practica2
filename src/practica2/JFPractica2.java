@@ -157,6 +157,11 @@ public class JFPractica2 extends javax.swing.JFrame {
                 exportarMouseClicked(evt);
             }
         });
+        exportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportarActionPerformed(evt);
+            }
+        });
 
         modificarP.setText("Modificar Esta Palabra");
         modificarP.addActionListener(new java.awt.event.ActionListener() {
@@ -280,11 +285,11 @@ public class JFPractica2 extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textPalabra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(significadoP)
                     .addComponent(sinonimoP)
-                    .addComponent(antonimoP))
+                    .addComponent(antonimoP)
+                    .addComponent(textPalabra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -447,7 +452,15 @@ public class JFPractica2 extends javax.swing.JFrame {
     }//GEN-LAST:event_MostrarActionPerformed
 
     private void exportarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exportarMouseClicked
-
+        if(diccionario!=null){
+            Diccionario dic=(Diccionario) diccionario;
+            try {
+                dic.download();
+            } catch (Exception ex) {
+                Logger.getLogger(JFPractica2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            exportar.setEnabled(false);
+        }
     }//GEN-LAST:event_exportarMouseClicked
 
     private void modificarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPActionPerformed
@@ -460,6 +473,10 @@ public class JFPractica2 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "La palabra No existe en el diccionario");
         }
     }//GEN-LAST:event_modificarPActionPerformed
+
+    private void exportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exportarActionPerformed
 
     /**
      * @param args the command line arguments
