@@ -1,27 +1,31 @@
-Archivo
-Basurero
-Cama
-Dedo
-Enano
-Fogón
-Gato
-Horno
-Indio
-Jarrón
-Kilo
-León
-Madera
-Nomina
-Ñandú
-Oscuro
-Pulpa
-Querer
-Rastrillo
-Sapo
-Tubo
-Unicornio
-Viral
-Web
-Xilófono
-Yuca
-Zorro
+
+Pulpa: null
+Horno: null
+Xilófono: null
+Dedo: null
+León: null
+Tubo: null
+Zorro: null
+Basurero: null
+Fogón: null
+Jarrón: null
+Nomina: null
+Rastrillo: null
+Viral: null
+Yuca: null
+hola: hello
+Archivo: null
+Cama: null
+Enano: null
+Gato: null
+Indio: null
+Kilo: null
+Madera: null
+Oscuro: null
+Querer: null
+Sapo: null
+Unicornio: null
+Web: null
+buenas: null
+Ñandú: null
+Adios: nullsi llegue
